@@ -1,6 +1,5 @@
 import { getManager } from 'typeorm'
 import { Post } from '../entity/Post'
-import { Context } from 'koa'
 import { paginate } from '../common/paginate'
 
 export async function postGetAllService (params) {
@@ -28,10 +27,9 @@ export async function postCreateService (params) {
   return result
 }
 
-export async function postGetService (params, ctx: Context) {
+export async function postGetService (params) {
   const postRepository = getManager().getRepository(Post)
   const post = await postRepository.findOne(params)
-  if (!post) ctx.throw('post不存在', 404)
   return post
 }
   
