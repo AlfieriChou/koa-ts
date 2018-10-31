@@ -1,6 +1,6 @@
-import {getManager} from 'typeorm'
-import {Post} from '../entity/Post'
-import {Context} from 'koa'
+import { getManager } from 'typeorm'
+import { Post } from '../entity/Post'
+import { Context } from 'koa'
 
 export async function postGetAllService (params) {
   const postRepository = getManager().getRepository(Post)

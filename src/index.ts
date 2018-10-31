@@ -1,5 +1,5 @@
 import 'reflect-metadata'
-import {createConnection} from 'typeorm'
+import { createConnection } from 'typeorm'
 import * as Koa from 'koa'
 import * as Router from 'koa-router'
 import * as logger from 'koa-logger'
