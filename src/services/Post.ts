@@ -1,11 +1,24 @@
 import { getManager } from 'typeorm'
 import { Post } from '../entity/Post'
 import { Context } from 'koa'
+import { paginate } from '../common/paginate'
 
 export async function postGetAllService (params) {
-  const postRepository = getManager().getRepository(Post)
-  const posts = await postRepository.find()
-  return posts
+  const { pagination, page, size } = params
+  let sql = getManager().createQueryBuilder(Post, 'post')
+  if (params.id) sql = sql.where('post.id = :id', { id: params.id })
+  if (params.title) sql = sql.where('post.title like :title', { title: '%' + params.title + '%' })
+  if (pagination) {
+    const count = await sql.getCount()
+    sql.offset((page - 1) * size).limit(size)
+    const result = await sql.getMany()
+    return {
+      result: result,
+      paginate: paginate({ count, page, size })
+    }
+  }
+  const result = await sql.getMany()
+  return result
 }
 
 export async function postCreateService (params) {
