@@ -1,0 +1,36 @@
+{
+  "name": "koa-ts",
+  "version": "0.0.1",
+  "description": "Awesome project developed with TypeORM.",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AlfieriChou/koa-ts.git"
+  },
+  "keywords": [
+    "koa",
+    "typescript"
+  ],
+  "author": "AlfieriChou",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AlfieriChou/koa-ts/issues"
+  },
+  "homepage": "https://github.com/AlfieriChou/koa-ts#readme",
+  "devDependencies": {
+    "ts-node": "3.3.0",
+    "@types/node": "^8.0.29",
+    "typescript": "2.5.2"
+  },
+  "dependencies": {
+    "koa": "^2.6.1",
+    "koa-bodyparser": "^4.2.1",
+    "koa-logger": "^3.2.0",
+    "koa-router": "^7.4.0",
+    "mysql": "^2.14.1",
+    "reflect-metadata": "^0.1.10",
+    "typeorm": "0.2.8"
+  }
+}
