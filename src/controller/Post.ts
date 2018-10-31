@@ -1,5 +1,5 @@
-import {Context} from 'koa'
-import {postGetAllService, postCreateService, postGetService} from '../services/Post'
+import { Context } from 'koa'
+import { postGetAllService, postCreateService, postGetService } from '../services/Post'
 
 export async function postGetAllAction (ctx: Context) {
   const params = ctx.query
