@@ -1,5 +1,6 @@
 import {getManager} from 'typeorm'
 import {Post} from '../entity/Post'
+import {Context} from 'koa'
 
 export async function postGetAllService (params) {
   const postRepository = getManager().getRepository(Post)
@@ -14,9 +15,10 @@ export async function postCreateService (params) {
   return result
 }
 
-export async function postGetService (params) {
+export async function postGetService (params, ctx: Context) {
   const postRepository = getManager().getRepository(Post)
   const post = await postRepository.findOne(params)
+  if (!post) ctx.throw('post不存在', 404)
   return post
 }
   

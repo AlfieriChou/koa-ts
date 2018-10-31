@@ -9,7 +9,7 @@ export class Post {
   @Column()
   title: string
 
-  @Column("text")
+  @Column('text')
   text: string
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
