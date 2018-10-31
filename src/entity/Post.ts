@@ -12,4 +12,17 @@ export class Post {
   @Column("text")
   text: string
 
+  @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
+  created_at:string
+
+  @Column({
+    type: 'date'
+  })
+  updated_at:string
+
+  @Column({
+    type: 'date'
+  })
+  deleted_at:string
+
 }
