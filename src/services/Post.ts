@@ -1,13 +1,13 @@
 import { getManager } from 'typeorm'
 import { Post } from '../entity/Post'
-import { paginate } from '../common/paginate'
+import { paginate } from '../common/Paginate'
 
 export async function postGetAllService (params) {
   const { pagination, page, size } = params
   let sql = getManager().createQueryBuilder(Post, 'post')
   if (params.id) sql = sql.where('post.id = :id', { id: params.id })
   if (params.title) sql = sql.where('post.title like :title', { title: '%' + params.title + '%' })
-  if (pagination) {
+  if (pagination.toString() === 'true') {
     const count = await sql.getCount()
     sql.offset((page - 1) * size).limit(size)
     const result = await sql.getMany()
