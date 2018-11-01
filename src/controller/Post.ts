@@ -1,5 +1,5 @@
 import { Context } from 'koa'
-import { postGetAllService, postCreateService, postGetService } from '../services/Post'
+import { postGetAllService, postCreateService, postGetService, postUpdateService, postDestroyService } from '../services/Post'
 
 export async function postGetAllAction (ctx: Context) {
   const params = ctx.query
@@ -15,7 +15,18 @@ export async function postCreateAction (ctx: Context) {
 
 export async function postGetAction (ctx: Context) {
   const params = ctx.params
-  const result = await postGetService(params)
-  if (!result) ctx.throw('post不存在！！！', 404)
+  const result = await postGetService(ctx, params)
+  ctx.body = result
+}
+
+export async function postUpdateAction (ctx: Context) {
+  const params = Object.assign(ctx.params, ctx.request.body)
+  const result = await postUpdateService(ctx, params)
+  ctx.body = result
+}
+
+export async function postDestroyAction (ctx: Context) {
+  const params = ctx.params
+  const result = await postDestroyService(ctx, params)
   ctx.body = result
 }

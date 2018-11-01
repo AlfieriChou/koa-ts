@@ -1,4 +1,4 @@
-import { postGetAllAction, postCreateAction, postGetAction } from './controller/Post'
+import { postGetAllAction, postCreateAction, postGetAction, postUpdateAction, postDestroyAction } from './controller/Post'
 
 export const AppRoutes = [
   {
@@ -15,5 +15,15 @@ export const AppRoutes = [
     path: '/posts/:id',
     method: 'get',
     action: postGetAction
+  },
+  {
+    path: '/posts/:id',
+    method: 'put',
+    action: postUpdateAction
+  },
+  {
+    path: '/posts/:id',
+    method: 'delete',
+    action: postDestroyAction
   }
 ]
