@@ -5,8 +5,9 @@
   "scripts": {
     "dev": "ts-node-dev src/index.ts",
     "start": "ts-node src/index.ts",
-    "migration:create": "typeorm migration:create -n Migration",
-    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run"
+    "migration:create": "ts-node ./node_modules/.bin/typeorm migration:create -n Migration",
+    "migration:run": "ts-node ./node_modules/.bin/typeorm migration:run",
+    "migration:revert": "ts-node ./node_modules/.bin/typeorm migration:revert"
   },
   "repository": {
     "type": "git",
