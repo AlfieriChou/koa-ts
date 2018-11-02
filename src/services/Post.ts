@@ -22,15 +22,14 @@ export async function postGetAllService (params) {
 }
 
 export async function postCreateService (params) {
-  const postRepository = getManager().getRepository(Post)
-  const newPost = await postRepository.create(params)
-  const result = await postRepository.save(newPost)
+  const postRepository = getManager().createQueryBuilder(Post, 'post')
+  const result = await postRepository.insert().into(Post).values(params).execute()
   return result
 }
 
 export async function postGetService (ctx: Context, params) {
-  const postRepository = getManager().getRepository(Post)
-  const post = await postRepository.findOne(params)
+  const postRepository = getManager().createQueryBuilder(Post, 'post')
+  const post = await postRepository.where({ id: params.id })
   if (!post) ctx.throw('该信息不存在', 404)
   return post
 }
@@ -43,7 +42,6 @@ export async function postUpdateService (ctx: Context, params) {
   return result
 }
 
-// 这里需要注意下 这是物理删除 一般来说是逻辑删除 更新deleted_at时间就可以了
 export async function postDestroyService (ctx: Context, params) {
   const postRepository = getManager().createQueryBuilder(Post, 'post')
   const exists = await postRepository.where({ id: params.id })
