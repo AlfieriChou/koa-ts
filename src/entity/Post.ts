@@ -13,6 +13,6 @@ export class Post {
   text: string
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
-  created_at:string
+  created_at: string
 
 }
