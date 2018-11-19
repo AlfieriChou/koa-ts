@@ -1,4 +1,7 @@
 # Awesome Project Build with TypeORM
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/AlfieriChou/koa-ts.svg)](https://greenkeeper.io/)
+
         
 Steps to run this project:
 
